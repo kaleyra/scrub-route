@@ -1,0 +1,16 @@
+{
+   "name": "kaleyra/route",
+   "description": "Provides route",
+   "license": "MIT",
+   "require": {
+       "php": ">=5.3.2"
+   },
+   "autoload": {
+       "psr-4": { "Kaleyra\\Route\\": "" }
+   },
+   "extra": {
+       "branch-alias": {
+           "dev-master": "HEAD"
+       }
+   }
+}
