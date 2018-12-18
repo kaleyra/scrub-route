@@ -21,7 +21,7 @@ function createFile($conn)
 
     foreach ($countries as $code => $cid) {
         $name = "country-".$code.".txt";
-        //$myfile = fopen($folder.$name, "w");
+        $myfile = fopen($folder.$name, "w");
 
         $series = getSeries($conn, $cid);
        
