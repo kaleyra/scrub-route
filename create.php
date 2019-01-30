@@ -1,9 +1,5 @@
 <?php
-
 include 'config.php';
-
-
-
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);
@@ -17,8 +13,13 @@ if ($conn->connect_error) {
 function createFile($conn)
 {
     $folder = './country-file/';
+    $countries = [];
     $countries = getCountry($conn);
-
+    if (empty($countries)) {
+        die("No country found");
+    }
+    $i = 0;
+    $s = 0;
     foreach ($countries as $code => $cid) {
         $name = "country-".$code.".txt";
         $myfile = fopen($folder.$name, "w");
@@ -31,13 +32,19 @@ function createFile($conn)
         ];
        
         if (!empty($series)) {
+            $s++;
             $match = strlen(max(array_keys($series)));
             $data['match'] = $match;
             $data['srs'] = $series;
         }
         
         fwrite($myfile, json_encode($data));
+
+        $i++;
     }
+
+    echo "Total $i file created and ";
+    echo "$s file have series data";
 }
 
 createFile($conn);
