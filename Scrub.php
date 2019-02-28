@@ -4,7 +4,6 @@ namespace Kaleyra\Route;
 class Scrub
 {
     public static $series;
-      
 
     public static function index($cid, $number)
     {
